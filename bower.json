@@ -1,0 +1,14 @@
+{
+  "name": "doc-frontend-tech",
+  "version": "0.1.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "reveal.js": "2.6.1",
+    "underscore": "1.5.2",
+    "jquery": "2.0.3"
+  }
+}
