@@ -1,5 +1,170 @@
 extends layout
 
 block content
-  h1 오케이
-  p Welcome
+  .reveal
+    .slides
+      //====== 타이틀
+      section
+        h1 Javascript
+        h3 중심 개발 문화
+        hr
+        h5 Front-end Technology
+        p OKJSP 13주년 기념 컨퍼런스
+        p
+          small
+            a(href="https://twitter.com/ibare") @ibare&nbsp;
+            &nbsp; | &nbsp;
+            a(href="https://github.com/ibare/doc-frontend-tech") https://github.com/ibare/doc-frontend-tech
+      //====== 소개
+      section
+        section
+          h1 About Me
+        section
+          h1 김민태
+          h2 at NCSOFT
+          hr
+          h5 Front-end base developer
+        section
+          h1 chekit.us
+        section
+          h1 Mobile Service
+          p Node.js / Mongo DB / AWS
+          p 80 RESTful APIs
+          p Android / iOS / Mobile & Desktop Web
+        section
+          h1 Team Members
+          ul
+            li UX (2)
+            li Designer (1)
+            li Android (1)
+            li Etc (1)
+        section(data-background="red")
+          h1 Scrum Team !!!
+          hr
+          h2 3 Month
+        section
+          h1 1 Etc Developer
+          hr
+          h2 기타 개발자에게 생긴 일
+      //====== 어떤 개발 언어를 선택해야할까?
+      section
+        section
+          h1 Language
+        section
+          h2 HTML
+          h2 CSS
+          h2 jQuery
+      //====== NodeJS
+      section
+        section
+          h1 NodeJS
+          p
+            small
+              a(href="http://nodejs.org/") http://nodejs.org
+        section
+          h1 PayPal
+        section
+          pre
+            code.
+              var express = require('express')
+                , routes = require('./routes')
+                , http = require('http');
+
+              var app = express();
+
+              app.set('port', process.env.PORT || 4000);
+              app.set('view engine', 'jade');
+              app.use(app.router);
+              app.use(express.static(path.join(__dirname, 'public')));
+
+              app.get('/', routes.index);
+
+              http.createServer(app).listen(app.get('port'), function(){
+                console.log(app.get('port') + ' 포트로 서비스가 시작되었습니다.');
+              });
+
+        section
+          h1 NPM
+          p
+            small
+              a(href="https://npmjs.org/") https://npmjs.org
+      //====== Express - Web Application Framework
+      section
+        section
+          h1 Express
+          p
+            small
+              a(href="http://expressjs.com/") http://expressjs.com
+        section
+      //====== Jade -- Server Side HTML Template Engine
+      section
+        section
+          h1 Jade
+          p
+            small
+              a(href="http://jade-lang.com/") http://jade-lang.com
+        section
+      //====== AngularJS -- Front-end Web Application Framework
+      section
+        section
+          h1 AngularJS
+          p
+            small
+              a(href="http://angularjs.org/") http://angularjs.org
+        section
+      //====== Etc Library & Framework -- jquery, jquery-ui, underscore, bootstrap, Parallax scrolling and more
+      section
+        section
+          h1 and More
+        section
+      //====== Bower - Front-end Package Management
+      section
+        section
+          h1 Bower
+          p
+            small
+              a(href="http://bower.io/") http://bower.io
+        section
+      //====== Grunt - Javascript Task Runner
+      section
+        section
+          h1 Grunt
+          p
+            small
+              a(href="http://gruntjs.com/") http://gruntjs.com
+        section
+      //====== MongoDB
+      section
+        section
+          h1 MongoDB
+          p
+            small
+              a(href="http://www.mongodb.org/") http://www.mongodb.org
+        section
+      //====== Deploy
+      section
+        section
+          h1 Deploy
+        section
+          h1 Web Hosting
+        section
+          h1 PaaS vs. IaaS
+        section
+          h1 Heroku
+          h2 PaaS
+        section
+          h1 AWS
+          h2 IaaS
+      //====== Git
+      section
+        section
+          h1 Git
+          p
+            small
+              a(href="http://git-scm.com/") http://git-scm.com
+        section
+      //====== Summary
+      section
+        section
+          h1 Summary
+        section

@@ -1,0 +1,6 @@
+/*
+ * 코드 하일라이트 상자의 그림자를 취소한다.
+ */
+.reveal pre {
+  box-shadow: none;
+}
