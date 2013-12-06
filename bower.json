@@ -9,6 +9,7 @@
   "dependencies": {
     "reveal.js": "2.6.1",
     "underscore": "1.5.2",
-    "jquery": "2.0.3"
+    "jquery": "2.0.3",
+    "angular": "1.2.3"
   }
 }

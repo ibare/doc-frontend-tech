@@ -20,7 +20,7 @@ module.exports = function(grunt) {
     },
     concat: {
       jsdist: {
-        src: ['public/js/*.js'],
+        src: ['public/js/ng-okjsp.js'],
         dest: 'public/js/<%= pkg.name %>.js'
       },
       cssdist: {

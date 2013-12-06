@@ -1,16 +1,19 @@
 doctype 5
-html
+html(ng-app)
   head
     title OKJSP
     link(rel='stylesheet', href='/components/reveal.js/css/reveal.min.css')
     link(rel='stylesheet', href='/components/reveal.js/css/theme/default.css')
     link(rel='stylesheet', href='/css/doc-frontend-tech.min.css')
 
-  body
-    block content
-
+    script(type="text/javascript", src="/components/angular/angular.min.js")
     script(type="text/javascript", src="/components/reveal.js/lib/js/head.min.js")
     script(type="text/javascript", src="/components/reveal.js/js/reveal.min.js")
+    script(type="text/javascript", src="/js/doc-frontend-tech.min.js")
+
+  body
+
+    block content
 
     script(type="text/javascript").
       Reveal.initialize({

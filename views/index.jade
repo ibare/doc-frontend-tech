@@ -17,8 +17,7 @@ block content
             a(href="https://github.com/ibare/doc-frontend-tech") https://github.com/ibare/doc-frontend-tech
       //====== 소개
       section
-        section
-          h1 About Me
+        section(data-background="/images/ibare.jpg")
         section
           h1 김민태
           h2 at NCSOFT
@@ -38,22 +37,51 @@ block content
             li Designer (1)
             li Android (1)
             li Etc (1)
-        section(data-background="red")
-          h1 Scrum Team !!!
-          hr
-          h2 3 Month
         section
           h1 1 Etc Developer
           hr
           h2 기타 개발자에게 생긴 일
+        section
+          h1 개발 기간
+          hr
+          h2 3 Month
+        section
+          h1 Scrum Team !!!
+        section
+          h1 1 Pizza Team !!!
+        section(data-background="red")
+          h1 젠장! 망했어요 
+          h1 ㅜ.ㅜ 
+        section
+          h1 어떻게 하지?
+          h2 Etc는 직장인 
+          h2 Etc는 애기아빠
+          h2 Etc는... ㅜ.ㅜ 
       //====== 어떤 개발 언어를 선택해야할까?
       section
         section
-          h1 Language
+          h1 개발 언어
+          hr
+          p 모바일 서비스를 개발하기 위해 <strong>한 명의 개발자</strong>에게 선택권이 있다면 어떤 선택이 최선의 선택일까?
         section
-          h2 HTML
-          h2 CSS
-          h2 jQuery
+          h1 프로젝트 환경
+          ul 
+            li 애자일 & 이터레이션
+            li 프로토타이핑 개발 방식
+            li 멀티 플랫폼
+            li 초고속 서비스 런칭
+        section
+          h1 Client
+          ul
+            li Android / iOS
+            li Mobile Web
+            li Desktop Web
+            li Firfox App
+            li Tizen App
+            li Chrome Web App
+        section
+          h1 REST API
+
       //====== NodeJS
       section
         section
@@ -61,33 +89,99 @@ block content
           p
             small
               a(href="http://nodejs.org/") http://nodejs.org
+          ul
+            li 서버 사이드 자바스크립트 런타임
+            li V8 엔진
+            li none-Blocking
+            li 블라 블라 블라~ 
         section
           h1 PayPal
+          blockquote " Node.js is like a Ferrari "
+          p
+            small 
+              a(href="http://www.datacenterknowledge.com/archives/2013/12/04/paypal-groupon-go-node-js") http://www.datacenterknowledge.com/archives/2013/12/04/paypal-groupon-go-node-js/
         section
-          pre
-            code.
-              var express = require('express')
-                , routes = require('./routes')
-                , http = require('http');
-
-              var app = express();
-
-              app.set('port', process.env.PORT || 4000);
-              app.set('view engine', 'jade');
-              app.use(app.router);
-              app.use(express.static(path.join(__dirname, 'public')));
-
-              app.get('/', routes.index);
-
-              http.createServer(app).listen(app.get('port'), function(){
-                console.log(app.get('port') + ' 포트로 서비스가 시작되었습니다.');
-              });
-
+          h1 근데 정말 좋아요?
+          ul
+            li Ruby on Rails
+            li Python
+            li Java
+            li ...
+            li 이 녀석들 보다 어떤 장점이?
+        section
+          h1 사실 가장 익숙해서 골랐을 뿐!
+          h2 ㅎㅎㅎㅎㅎㅎㅎㅎㅎ
+          h1 ㅡ.ㅡ;;
         section
           h1 NPM
           p
             small
               a(href="https://npmjs.org/") https://npmjs.org
+          img(src="/images/npm.jpg")
+        section
+          pre
+            code.
+              $ npm search something-package
+              $ npm install something-package
+              $ npm install something-package -g
+              $ npm update
+        section
+          h2 서버를 만들어 봅시다
+        section
+          pre
+            code.
+              var http = require('http');
+              var fs = require('fs');
+              var index = fs.readFileSync('index.html');
+
+              http.createServer(function (req, res) {
+                res.writeHead(200, {'Content-Type': 'text/plain'});
+                res.end(index);
+              }).listen(80);
+        section
+          pre
+            code.
+              var http = require("http"),
+                  url = require("url"),
+                  path = require("path"),
+                  fs = require("fs")
+                  port = process.argv[2] || 8888;
+
+              http.createServer(function(request, response) {
+
+                var uri = url.parse(request.url).pathname
+                  , filename = path.join(process.cwd(), uri);
+
+                var contentTypesByExtension = {
+                  '.html': "text/html",
+                  '.css':  "text/css",
+                  '.js':   "text/javascript"
+                };
+        section
+          pre
+            code.
+                path.exists(filename, function(exists) {
+                  if(!exists) {
+                    response.writeHead(404, {"Content-Type": "text/plain"});
+                    response.write("404 Not Found\n");
+                    response.end();
+                    return;
+                  }
+
+                  fs.readFile(filename, "binary", function(err, file) {
+                    if(err) {        
+                      response.writeHead(500, {"Content-Type": "text/plain"});
+                      response.write(err + "\n");
+                      response.end();
+                      return;
+                    }
+                  });
+                });
+              }).listen(parseInt(port, 80));
+        section
+          h1 ㅡ.ㅡ;
+        section
+          h1 stackoverflow.com
       //====== Express - Web Application Framework
       section
         section
@@ -96,6 +190,30 @@ block content
             small
               a(href="http://expressjs.com/") http://expressjs.com
         section
+          pre
+            code.
+              $ npm install express -g
+              $ express helloworld
+        section
+          pre
+            code.
+              var express = require("express")
+                , routes = require("./routes")
+                , http = require("http");
+
+              var app = express();
+
+              app.set('port', process.env.PORT || 4000);
+              app.use(app.router);
+              app.use(express.static(path.join(__dirname, 'public')));
+
+              app.get('/', function(req, res) { res.status(200).send('Hello World'); });
+
+              http.createServer(app).listen(app.get('port'), function(){
+                console.log(app.get('port') + '번으로 서비스 시작!');
+              });
+        section
+          h1 다음 ?
       //====== Jade -- Server Side HTML Template Engine
       section
         section
@@ -104,6 +222,71 @@ block content
             small
               a(href="http://jade-lang.com/") http://jade-lang.com
         section
+          h1 Node Template engine
+        section
+          pre
+            code.
+              <div class="container">
+                <h1>OKJSP</h1>
+                <p>13주년 개발자 컨퍼런스에 오신걸 환영합니다.</p>
+                <h2>주제</h2>
+                <p>개발자의 가치를 높이는 기술</p>
+                <h2>시간</h2>
+                <p>2013. 12. 7. 토요일. 오전 9:00~오후 6:30</p>
+                <h2>장소</h2>
+                <p>SETEC 국제 회의장(학여울역)</p>
+              </div>
+        section
+          pre
+            code.
+              .container
+                h1 OKJSP
+                p 13주년 개발자 컨퍼런스에 오신걸 환영합니다.
+                h2 주제
+                p 개발자의 가치를 높이는 기술
+                h2 시간
+                p 2013. 12. 7. 토요일. 오전 9:00~오후 6:30
+                h2 장소
+                p SETEC 국제 회의장(학여울역)
+
+        section
+          pre
+            code.
+              var express = require("express")
+                , routes = require("./routes")
+                , http = require("http");
+
+              var app = express();
+
+              app.set('port', process.env.PORT || 4000);
+              app.set('views', path.join(__dirname, 'app/views'));
+              app.set('view engine', 'jade');
+              app.use(app.router);
+              app.use(express.static(path.join(__dirname, 'public')));
+
+              app.get('/', routes.index);
+        section
+          img(src="/images/folder.jpg", width="400")
+        section
+          p 이제 웹 프론트앤드로 가봅시다.
+        section
+          ul 
+            li jquery
+            li jquery-ui
+            li jquerymobile
+            li Sencha or Ext JS
+            li Backbone
+            li KnockoutJS
+            li AngularJS
+            li Bootstrap
+            li EmberJS
+            li ...
+        section
+          p
+            small
+              a(href="http://jonathanmh.com/best-javascript-mvc-frameworks-2013-2014/") http://jonathanmh.com/best-javascript-mvc-frameworks-2013-2014/
+          img(src="/images/js-fw-graph.jpg")
+
       //====== AngularJS -- Front-end Web Application Framework
       section
         section
@@ -112,11 +295,60 @@ block content
             small
               a(href="http://angularjs.org/") http://angularjs.org
         section
+          ul
+            li Template
+            li Expressions
+            li Data Binding
+            li Directive
+            li Scope
+            li Model
+            li View
+            li Controller
+            li Module
+            li Service
+            li Filter
+            li Compiler
+            li Injector
+            li Dependency Injection
+        section
+          img(src="/images/ng-basic.jpg")
+          div
+            p
+              input(type="text", ng-model="yourName", placeholder="Enter a name here")
+            p Hello {{yourName}} ?
+        section
+          img(src="/images/ng-scope.jpg", width="800")
+        section
+          img(src="/images/ng-template.jpg", width="800")
+        section
+          img(src="/images/ng-controller.jpg", width="800")
+        section
+          a(href="https://github.com/jmcunningham/AngularJS-Learning") https://github.com/jmcunningham/AngularJS-Learning
       //====== Etc Library & Framework -- jquery, jquery-ui, underscore, bootstrap, Parallax scrolling and more
       section
         section
-          h1 and More
+          h1 이게 끝일까요?
         section
+          h3 Responsive Web & Grid System
+          h3 Parallax Scrolling
+          h3 Infinity scroll
+          h3 Lazy loading
+          h3 Animation
+          h3 Graphics & Chart
+          h3 WebGL
+          h3 ㅜ.ㅜ
+        section
+          h1 문제점은?
+        section
+          ul
+            li 너무 많고
+            li 너무 많고
+            li 너무 많다
+        section
+          h1 핵심
+          ul
+            li 다양한 버전
+            li 프레임웍 & 라이브러리의 상호 의존성
       //====== Bower - Front-end Package Management
       section
         section
@@ -124,23 +356,38 @@ block content
           p
             small
               a(href="http://bower.io/") http://bower.io
+        section(data-background="/images/bower.jpg")        
         section
-      //====== Grunt - Javascript Task Runner
-      section
+          pre
+            code.
+              $ npm install -g bower
         section
-          h1 Grunt
-          p
-            small
-              a(href="http://gruntjs.com/") http://gruntjs.com
+          h2 bower.json
+          pre
+            code.
+              {
+                "name": "doc-frontend-tech",
+                "version": "0.1.0",
+                "ignore": [
+                  "**/.*",
+                  "node_modules",
+                  "bower_components"
+                ],
+                "dependencies": {
+                  "reveal.js": "2.6.1",
+                  "underscore": "1.5.2",
+                  "jquery": "2.0.3",
+                  "angular": "1.2.3"
+                }
+              }
+        section 
+          pre 
+            code.
+              $ bower install 
         section
-      //====== MongoDB
-      section
+          img(src="/images/bower-folder.jpg", width="300")
         section
-          h1 MongoDB
-          p
-            small
-              a(href="http://www.mongodb.org/") http://www.mongodb.org
-        section
+          img(src="/images/bower-error.jpg", width="800")
       //====== Deploy
       section
         section
@@ -155,6 +402,212 @@ block content
         section
           h1 AWS
           h2 IaaS
+        section
+          h1 Heroku
+        section
+          img(src="/images/heroku-web-app.jpg")          
+        section
+          img(src="/images/heroku-app-setting.jpg")          
+        section
+          img(src="/images/heroku-data-storage.jpg")          
+        section
+          img(src="/images/heroku-mobile.jpg")          
+        section
+          img(src="/images/heroku-logging.jpg")          
+        section
+          h1 Install Heroku Toolbelt
+          p
+            a(href="https://toolbelt.heroku.com/") https://toolbelt.heroku.com
+        section
+          pre 
+            code.
+              $ heroku create ibare-okjsp
+        section
+          pre 
+            code.
+              $ git push heroku master
+              Counting objects: 223, done.
+              Delta compression using up to 4 threads.
+              Compressing objects: 100% (173/173), done.
+              Writing objects: 100% (223/223), 967.78 KiB | 202 KiB/s, done.
+              Total 223 (delta 33), reused 219 (delta 32)
+
+              -----> Removing .DS_Store files
+              -----> Node.js app detected
+
+              -----> Defaulting to latest stable node: 0.10.22
+              -----> Downloading and installing node
+              -----> Installing dependencies
+                     npm http GET https://registry.npmjs.org/jade
+                     npm http GET https://registry.npmjs.org/express/3.2.4
+        section
+          img(src="/images/heroku-app-setting.jpg")          
+        section
+          h1 잠깐!
+        section
+          h2 파일 업로드가 안됩니다
+          h5 AWS S3 / Dropbox / Evernote / Google Drive / Etc ... 대안을 찾아야 
+        section
+          h1 AWS
+        section(data-background="/images/aws-components.jpg")
+        section
+          ul
+            li Route 53
+            li ELB (Elastic Load Balancer)
+            li EC2 & Auto Scaling
+            li S3
+            li CloudFront
+            li SNS, SES, SQS
+            li ElastiCache
+        section
+          h1 AWS NOW
+          p
+            a(href="http://www.awsnow.info") http://www.awsnow.info
+      //====== Grunt - Javascript Task Runner
+      section
+        section
+          h1 또 다른 배포 문제
+        section
+          h2 이거 어떻게 할까요?
+          ul
+            li 파일 합치기
+            li 파일 압축하기
+            li 테스트 자동화하기
+        section
+          h2 이런거 보셨죠?
+          ul 
+            li jquery.min.js
+            li bootstrap.min.js
+            li 수 많은 min.js
+        section
+          h2 소스 보기 해보니까?
+        section
+          h1 이게모꼬?
+          pre
+            code.
+              /*
+               AngularJS v1.2.3
+               (c) 2010-2014 Google, Inc. http://angularjs.org
+               License: MIT
+              */
+              (function(X,O,r){'use strict';function A(b){return function() {var a=arguments[0],c,
+        section
+          h1 뭔가 멋진데?
+        section
+          p 배포할 때 마다 매번 수동으로
+          h1 ???
+        section
+          h1 결론
+          h2 하지말자. 예~ ㅡ.ㅡ)v
+        section
+          h2 제가한번 해보겠습니다.
+        section
+          h1 Grunt
+          p
+            small
+              a(href="http://gruntjs.com/") http://gruntjs.com
+        section
+          p The Javascript Task Runner
+        section
+          h1 설치
+          pre
+            code.
+              $ npm install -g grunt-cli
+        section
+          h2 package.json
+          pre
+            code.
+              {
+                "dependencies": {
+                  "express": "3.2.4",
+                  "jade": "*"
+                },
+                "devDependencies": {
+                  "grunt": "~0.4.2",
+                  "grunt-contrib": "~0.8.0",
+                  "grunt-contrib-jshint": "~0.6.3",
+                  "grunt-contrib-nodeunit": "~0.2.0",
+                  "grunt-contrib-uglify": "~0.2.2",
+                  "grunt-contrib-concat": "~0.3.0",
+                  "grunt-contrib-cssmin": "~0.6.2"
+                }
+              }
+        section
+          h2 Gruntfile.js
+          pre
+            code.
+              module.exports = function(grunt) {
+                grunt.initConfig({
+                  pkg: grunt.file.readJSON('package.json'),
+                  uglify: {
+                  },
+                  cssmin: {
+                  },
+                  concat: {
+                  }
+                });
+
+                grunt.loadNpmTasks('grunt-contrib-cssmin');
+                grunt.loadNpmTasks('grunt-contrib-uglify');
+                grunt.loadNpmTasks('grunt-contrib-concat');
+
+                grunt.registerTask('default', ['concat','uglify','cssmin']);
+              };
+        section
+          h2 Gruntfile.js
+          pre
+            code.
+              concat: {
+                jsdist: {
+                  src: ['public/js/ng-okjsp.js'],
+                  dest: 'public/js/<%= pkg.name %>.js'
+                },
+                cssdist: {
+                  src: ['public/css/reset.css', 'public/css/tomorrow-night.css'],
+                  dest: 'public/css/<%= pkg.name %>.css'
+                }
+              }
+        section
+          h2 Gruntfile.js
+          pre
+            code.
+              cssmin: {
+                combine: {
+                  files: {
+                    'public/css/<%= pkg.name %>.min.css': ['<%= concat.cssdist.dest %>']
+                  }
+                }
+              }
+        section
+          h2 Gruntfile.js
+          pre
+            code.
+              uglify: {
+                options: {
+                  banner: '/*! <%= pkg.name %> <%= pkg.version %> */\n'
+                },
+                dist: {
+                  files: {
+                    'public/js/<%= pkg.name %>.min.js': ['<%= concat.jsdist.dest %>']
+                  }
+                }
+              }
+        section
+          pre
+            code.
+              $ grunt
+
+              Running "concat:jsdist" (concat) task
+              File "public/js/doc-frontend-tech.js" created.
+
+              Running "concat:cssdist" (concat) task
+              File "public/css/doc-frontend-tech.css" created.
+
+              Running "uglify:dist" (uglify) task
+              File "public/js/doc-frontend-tech.min.js" created.
+
+              Running "cssmin:combine" (cssmin) task
+              File public/css/doc-frontend-tech.min.css created.
       //====== Git
       section
         section
@@ -162,9 +615,27 @@ block content
           p
             small
               a(href="http://git-scm.com/") http://git-scm.com
+      //====== MongoDB
+      section
         section
+          h1 MongoDB
+          p
+            small
+              a(href="http://www.mongodb.org/") http://www.mongodb.org
       //====== Summary
       section
         section
           h1 Summary
+          ul
+            li 아이디어를 가진 사람이 가장 가치있는 세상이 되가고 있다.
+            li 빠르게 구현하고, 빠르게 실패할 수 있는 최적의 환경이 되었다.
+            li IT 업종의 모든 직군 중 개발자가 가장 유리한 세상에 살고있다.
+            li 프론트앤드 개발자라면 더욱 더 유리하다.
+            li 알아야 할 것이 너무 많지만, 장벽은 점점 낮아지고 있다.
         section
+          h1 Q&A
+          p 시간이 없지 않을까요? ^^;
+        section
+          h1 감사합니다.
+          p 
+            a(href="https://github.com/ibare/doc-frontend-tech") https://github.com/ibare/doc-frontend-tech

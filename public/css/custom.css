@@ -4,3 +4,20 @@
 .reveal pre {
   box-shadow: none;
 }
+
+.reveal ul {
+  margin-top: 2em;
+  margin-left: 0;
+  list-style: none;
+}
+
+.reveal strong {
+  font-size: 1.6em;
+  color: #62defd;
+  text-decoration: underline;
+}
+
+.reveal input {
+  font-size: 30px;
+  padding: 0.3em;
+}
