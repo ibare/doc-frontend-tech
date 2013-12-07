@@ -37,4 +37,4 @@ $ node app.js
 
 MIT licensed
 
-Copyright (C) 2013 Kim min tae, <http://ibare.kr> / <ibare77@gmail.com>
+Copyright (C) 2013 Kim min tae, <http://www.ibare.kr> / <ibare77@gmail.com>
